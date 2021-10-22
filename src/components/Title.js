@@ -1,5 +1,6 @@
+import { Children } from "react";
 import style from "./Title.module.css";
 
-export default function Title() {
-  return <h1 className={style.title}>Welcome to Github Users</h1>;
+export default function Title({ children }) {
+  return <h1 className={style.title}>{children}</h1>;
 }
