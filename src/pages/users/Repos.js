@@ -19,6 +19,7 @@ const Container = styled.div`
 
 export default function Repos() {
   const [repos, setRepos] = useState([]);
+  const username = localStorage.getItem("currentUser");
   const count = localStorage.getItem("repoCount");
   const location = useLocation();
   const pathName = location.pathname;
@@ -27,7 +28,7 @@ export default function Repos() {
   const initial = ((currentPage || 1) - 1) * 5;
 
   useEffect(() => {
-    getRepos("gaearon").then(setRepos).catch(console.log);
+    getRepos(username).then(setRepos).catch(console.log);
   }, []);
 
   if (query && !currentPage) {
