@@ -1,13 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap");
 
-body {
-  font-family: "Source Code Pro", sans-serif;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 20px;
-  color: black;
-}
-
 /* CSS reset with box-sizing fix */
 html,
 body,
@@ -139,4 +131,13 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+/* Reset ends here */
+
+body {
+  font-family: "Source Code Pro", sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  color: black;
 }
