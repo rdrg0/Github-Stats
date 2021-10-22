@@ -5,10 +5,17 @@ import Error404 from "./pages/Error404";
 import Followers from "./pages/users/Followers";
 import Home from "./pages/Home";
 import Followings from "./pages/users/Followings";
+import styled from "@emotion/styled";
+
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 function App() {
   return (
-    <div className="app">
+    <Main>
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
@@ -29,7 +36,8 @@ function App() {
           <Link to="/favorite">Favorite</Link>
         </div>
       </Router>
-    </div>
+    </Main>
+
   );
 }
 
