@@ -13,7 +13,7 @@ export default function Search() {
         loading={loading}
         setLoading={setLoading}
       />
-      {/* {loading && <UserDetail />} */}
+      {!loading && value && <UserDetail />}
     </div>
   );
 }

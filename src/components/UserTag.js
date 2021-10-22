@@ -7,6 +7,9 @@ const MainContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
+  background-color: white;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
 `;
 
 const UserContainer = styled.div`

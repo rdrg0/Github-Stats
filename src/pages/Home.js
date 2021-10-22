@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
-import Title from "../components/Title";
+import { TitleH1 } from "../components/Title";
 import homeImg from "../home_img.png";
 
 const HomeImg = styled.img`
@@ -11,7 +11,7 @@ const HomeImg = styled.img`
 export default function Home() {
   return (
     <>
-      <Title>Welcome to Github Users</Title>
+      <TitleH1>Welcome to Github Users</TitleH1>
       <HomeImg src={homeImg} alt="github_mascot" />
       <Link to="/search">
         <button>Search</button>

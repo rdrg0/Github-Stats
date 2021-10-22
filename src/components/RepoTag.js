@@ -8,6 +8,9 @@ const MainContainer = styled.div`
   flex-direction: column;
   gap: 4px;
   padding: 8px 12px;
+  background-color: white;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
 `;
 
 const RepoFullName = styled.p`
