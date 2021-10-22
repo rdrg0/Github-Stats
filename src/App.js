@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Title from "./components/Title";
+import { TitleH1 } from "./components/Title";
 import Error404 from "./pages/Error404";
 import Followers from "./pages/users/Followers";
 import Home from "./pages/Home";
@@ -35,7 +35,7 @@ function App() {
             <UserDetails {...userData}/>
           </Route>
           <Route path="/favorite">
-            <Title> page Favorites not found</Title>
+            <TitleH1> page Favorites not found</TitleH1>
           </Route>
           <Route path="/users/:username/followers" component={Followers} />
           <Route path="/users/:username/followings" component={Followings} />
