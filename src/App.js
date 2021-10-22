@@ -6,12 +6,13 @@ import Followers from "./pages/users/Followers";
 import Home from "./pages/Home";
 import Followings from "./pages/users/Followings";
 import styled from "@emotion/styled";
+import Search from "./pages/Search";
 
 const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 function App() {
   return (
@@ -19,9 +20,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/search">
-            <Title> page Search not found</Title>
-          </Route>
+          <Route path="/search" component={Search} />
           <Route path="/favorite">
             <Title> page Favorites not found</Title>
           </Route>
@@ -37,7 +36,6 @@ function App() {
         </div>
       </Router>
     </Main>
-
   );
 }
 
