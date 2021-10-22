@@ -7,6 +7,7 @@ import Repos from "./pages/users/Repos";
 import Home from "./pages/Home";
 import Followings from "./pages/users/Followings";
 import styled from "@emotion/styled";
+import UserDetails from "./components/UserDetails";
 
 const Main = styled.main`
   display: flex;
@@ -15,13 +16,25 @@ const Main = styled.main`
 `;
 
 function App() {
+  const userData = {
+    //avatar="",
+    name: "Dan Abramov",
+    //starred: false,
+    description:
+      "Working on @reactjs. Co-author of Redux and Create React App. Building tools for humans.",
+    statFollowers: "64K",
+    statFollowings: "171",
+    statRepos: "249",
+    statGist: "72",
+  };
+
   return (
     <Main>
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/search">
-            <TitleH1> page Search not found</TitleH1>
+            <UserDetails {...userData} />
           </Route>
           <Route path="/favorite">
             <TitleH1> page Favorites not found</TitleH1>
