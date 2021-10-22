@@ -15,7 +15,7 @@ export default function Home() {
 
     <>
       <Title>
-        Welcome to Github Userss
+        Welcome to Github Users
       </Title>
       <HomeImg src={homeImg} alt="github_mascot" />
       <Link to="/search">
