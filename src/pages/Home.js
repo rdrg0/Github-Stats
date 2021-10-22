@@ -1,19 +1,29 @@
+import { Link } from "react-router-dom";
+import styled from "@emotion/styled"
 import Title from "../components/Title"
 import homeImg from "../home_img.png"
 
 
-
+const HomeImg = styled.img`
+  height: 240px;
+  width: 288.55px;
+`
 
 export default function Home() {
 
   return (
-    <main>
+
+    <>
       <Title>
         Welcome to Github Userss
       </Title>
-      <img src={homeImg} alt="github_mascot" />
-      <button>Search</button>
+      <HomeImg src={homeImg} alt="github_mascot" />
+      <Link to="/search">
+        <button>Search</button>
+      </Link>
+    </>
 
-    </main>
+
+
   )
 }
