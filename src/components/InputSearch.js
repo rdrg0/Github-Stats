@@ -19,7 +19,6 @@ export default function InputSearch({ value, setValue, setLoading }) {
   const handleInput = (e) => {
     e.preventDefault();
     setValue(e.target.value);
-    setLoading(true);
   };
   return (
     <InputStyle

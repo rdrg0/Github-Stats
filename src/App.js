@@ -32,16 +32,15 @@ function App() {
     <Main>
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/search" component={Search} />
-          <Route exact path="/search/users/:user" component={Search} />
-
-          <Route path="/favorite">
-            <TitleH1> page Favorites not found</TitleH1>
-          </Route>
           <Route path="/users/:username/followers" component={Followers} />
           <Route path="/users/:username/followings" component={Followings} />
           <Route path="/users/:username/repos" component={Repos} />
+          <Route path="/users/:username" component={Search} />
+          <Route path="/search" component={Search} />
+          <Route path="/favorites">
+            <TitleH1> page Favorites not found</TitleH1>
+          </Route>
+          <Route path="/" component={Home} />
           <Route path="*" component={Error404} />
         </Switch>
         <div className="footer">
