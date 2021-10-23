@@ -8,8 +8,8 @@ import styled from "@emotion/styled";
 import Search from "./pages/Search";
 import Favorites from "./pages/Favorites";
 import { ReactComponent as HomeIcon } from "./assets/VectorHomeIcon.svg";
-import { ReactComponent as SearchIcon } from "./assets/VectorFavoriteIcon.svg";
-import { ReactComponent as FavoriteIcon } from "./assets/VectorSearchIcon.svg";
+import { ReactComponent as FavoriteIcon } from "./assets/VectorFavoriteIcon.svg";
+import { ReactComponent as SearchIcon } from "./assets/VectorSearchIcon.svg";
 
 
 const Main = styled.main`
