@@ -1,10 +1,15 @@
 // Remember, props = avatar, name, starred, description, statFollowers, statFollowings, statRepos, statGist
 
 import { CardStats } from "./CardStat";
-import starred from "../assets/starred.svg";
+import starredIcon from "../assets/starred.svg";
+import notSarredIcon from "../assets/notStarred.svg"
 import styled from "@emotion/styled";
+import useStar from "../hooks/useStar";
 
 export default function UserDetails({ userData }) {
+
+  const [favorite, handleStar] = useStar(userData)
+
   const {
     avatar_url,
     name,
@@ -13,7 +18,11 @@ export default function UserDetails({ userData }) {
     following,
     public_repos,
     public_gists,
+    login
   } = userData;
+
+  console.log(userData.login)
+
 
   const CardsContainer = styled.div`
     display: grid;
@@ -45,13 +54,21 @@ export default function UserDetails({ userData }) {
     align-items: center;
     margin: 0px 4px;
   `
+  const Clickable = styled.div`
+    &:hover {
+      cursor: pointer;
+    }  
+  `
+
 
   return (
     <ResultContainer>
       <ImgStyle src={avatar_url} alt="avatar" />
-      <UserName> 
-        {name} 
-        <img src={starred} alt="starred" />
+      <UserName>
+        {name || login}
+        <Clickable onClick={handleStar}>
+          <img src={favorite ? starredIcon : notSarredIcon} alt="starred" />
+        </Clickable>
       </UserName>
       <h3> {bio} </h3>
       <CardsContainer>

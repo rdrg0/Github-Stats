@@ -38,6 +38,7 @@ export default function Search() {
   const handleFeedback = () => {
     if (userData !== null) {
       setCurrentUser(userData);
+      console.log(userData)
       return <UserDetails userData={userData} />;
     }
     return;

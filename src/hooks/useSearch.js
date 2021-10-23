@@ -17,8 +17,29 @@ export default function useSearch(username = "") {
     const searchUser = async () => {
       try {
         setLoading(true);
-        const user_data_api = await getUser(value);
-        setUserData(user_data_api);
+        console.log(value)
+        const savedFavorites = JSON.parse(localStorage.getItem("ghFavorites"));
+        if (savedFavorites && savedFavorites[value]) {
+          console.log("API not called")
+          setUserData(savedFavorites[value]);
+
+        } else {
+
+          const user_data_api = await getUser(value);
+          console.log(user_data_api)
+          const userLocalData = {
+            avatar_url: user_data_api.avatar_url,
+            name: user_data_api.name,
+            bio: user_data_api.bio,
+            followers: user_data_api.followers,
+            following: user_data_api.following,
+            public_repos: user_data_api.public_repos,
+            public_gists: user_data_api.public_gists,
+            login: user_data_api.login,
+            starred: false
+          }
+          setUserData(userLocalData);
+        }
         setLoading(false);
         push(`/users/${value}`);
       } catch (error) {
