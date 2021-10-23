@@ -1,13 +1,5 @@
 import styled from "@emotion/styled";
 
-const ContainerStyle = styled.div`
-  padding-top: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-`;
-
 const InputStyle = styled.input`
   border: none;
   outline: none;
@@ -23,30 +15,18 @@ const InputStyle = styled.input`
   padding: 4px 8px;
 `;
 
-export default function InputSearch({ value, setValue, loading, setLoading }) {
+export default function InputSearch({ value, setValue, setLoading }) {
   const handleInput = (e) => {
+    e.preventDefault();
     setValue(e.target.value);
     setLoading(true);
   };
-  console.log("render INPUT", !!value);
   return (
-    <ContainerStyle>
-      <InputStyle
-        placeholder="username"
-        type="text"
-        value={value}
-        onChange={handleInput}
-      />
-      <div>
-        <img alt="logo-github" src="/git-logo.png" />
-      </div>
-      {!value ? (
-        ""
-      ) : loading ? (
-        <h3>Retrieving user...</h3>
-      ) : (
-        <h3>No users...</h3>
-      )}
-    </ContainerStyle>
+    <InputStyle
+      placeholder="username"
+      type="text"
+      value={value}
+      onChange={handleInput}
+    />
   );
 }
