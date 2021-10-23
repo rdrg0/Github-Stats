@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { getUser } from "../services/gitHub_fetcher";
 import { useHistory } from "react-router";
 
-export default function useSearch() {
+export default function useSearch(username = "") {
   const [userData, setUserData] = useState(null);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(username);
   const [loading, setLoading] = useState(false);
 
   const { push } = useHistory();

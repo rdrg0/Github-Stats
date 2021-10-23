@@ -2,6 +2,7 @@ import InputSearch from "../components/InputSearch";
 import UserDetails from "../components/UserDetails";
 import useSearch from "../hooks/useSearch";
 import styled from "@emotion/styled";
+import { useParams } from "react-router";
 
 const MainContainer = styled.div`
   display: flex;
@@ -11,7 +12,8 @@ const MainContainer = styled.div`
 `;
 
 export default function Search() {
-  const [value, setValue, loading, userData] = useSearch();
+  const { username } = useParams();
+  const [value, setValue, loading, userData] = useSearch(username);
 
   const ContainerStyle = styled.div`
     display: flex;
