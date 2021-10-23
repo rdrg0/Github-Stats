@@ -8,9 +8,8 @@ import styled from "@emotion/styled";
 import Search from "./pages/Search";
 import Favorites from "./pages/Favorites";
 import { ReactComponent as HomeIcon } from "./assets/VectorHomeIcon.svg";
-import { ReactComponent as FavoriteIcon } from "./assets/VectorFavoriteIcon.svg";
-import { ReactComponent as SearchIcon } from "./assets/VectorSearchIcon.svg";
-import { useEffect, useReducer, useState } from "react";
+import { ReactComponent as SearchIcon } from "./assets/VectorFavoriteIcon.svg";
+import { ReactComponent as FavoriteIcon } from "./assets/VectorSearchIcon.svg";
 
 
 const Main = styled.main`
@@ -36,25 +35,27 @@ const Footer = styled.div`
   background: #F2F2F2;
   box-shadow: 0px -2px 0px rgba(0, 0, 0, 0.25);
 `
-const changeColor = (e) => {
-  const target = e.target
-  const classValue = target.attributes.class.value
-  const parentTarget = target.parentElement.parentElement.parentElement
-  switch (classValue) {
-    case "HomeIcon":
-      target.style.fill="#828282"
-      parentTarget.children[1].children[0].children[0].style.fill="#BDBDBD"
-      parentTarget.children[2].children[0].children[0].style.fill="#BDBDBD"
+const changeColor = () => {
+  const url = window.location.pathname
+  const Home = document.querySelector(".HomeIcon").children[0]
+  const Search = document.querySelector(".SearchIcon").children[0]
+  const Favorite = document.querySelector(".FavoriteIcon").children[0]
+
+  switch (url) {
+    case "/":
+      Home.attributes.fill.value="#828282"
+      Search.attributes.fill.value="#BDBDBD"
+      Favorite.attributes.fill.value="#BDBDBD"
       break;
-    case "SearchIcon":
-      target.style.fill="#828282"
-      parentTarget.children[0].children[0].children[0].style.fill="#BDBDBD"
-      parentTarget.children[2].children[0].children[0].style.fill="#BDBDBD"
+    case "/search":
+      Search.attributes.fill.value="#828282"
+      Home.attributes.fill.value="#BDBDBD"
+      Favorite.attributes.fill.value="#BDBDBD"
       break;
-    case "FavoriteIcon":
-      target.style.fill="#828282"
-      parentTarget.children[0].children[0].children[0].style.fill="#BDBDBD"
-      parentTarget.children[1].children[0].children[0].style.fill="#BDBDBD"
+    case "/favorites":
+      Favorite.attributes.fill.value="#828282"
+      Search.attributes.fill.value="#BDBDBD"
+      Home.attributes.fill.value="#BDBDBD"
       break;
     default:
       break;
@@ -76,16 +77,16 @@ function App() {
           <Route path="/" component={Home} />
           <Route component={Error404} />
         </Switch>
-        <Footer>
-          <Link to="/">
-            <HomeIcon fill="#BDBDBD" onClick={changeColor} />
-          </Link>
-          <Link to="/search">
-            <SearchIcon fill="#BDBDBD" onClick={changeColor}/>
-          </Link>
-          <Link to="/favorites">
-            <FavoriteIcon fill="#BDBDBD" onClick={changeColor} />
-          </Link>
+        <Footer onClick={changeColor}>
+        <Link to="/">
+          <HomeIcon className="HomeIcon" />
+        </Link>
+        <Link to="/search">
+          <SearchIcon className="SearchIcon"/>
+        </Link>
+        <Link to="/favorites">
+          <FavoriteIcon className="FavoriteIcon"/>
+        </Link>
         </Footer>
       </Router>
     </Main>
