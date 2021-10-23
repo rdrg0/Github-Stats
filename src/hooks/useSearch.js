@@ -11,6 +11,7 @@ export default function useSearch() {
   console.log(useHistory());
   useEffect(() => {
     setUserData(null);
+
     const searchUser = async () => {
       try {
         const user_data_api = await getUser(value);
