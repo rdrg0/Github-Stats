@@ -7,7 +7,7 @@ import Repos from "./pages/users/Repos";
 import Home from "./pages/Home";
 import Followings from "./pages/users/Followings";
 import styled from "@emotion/styled";
-import UserDetails from "./components/UserDetails";
+import Search from "./pages/Search";
 
 const Main = styled.main`
   display: flex;
@@ -36,9 +36,9 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/search">
-            <UserDetails {...userData} />
-          </Route>
+          <Route exact path="/search" component={Search} />
+          <Route exact path="/search/users/:user" component={Search} />
+
           <Route path="/favorite">
             <TitleH1> page Favorites not found</TitleH1>
           </Route>

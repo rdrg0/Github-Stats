@@ -1,3 +1,5 @@
+
+import { TitleH1 } from "../../components/Title";
 import styled from "@emotion/styled";
 import Pagination from "../../components/Pagination";
 import Feed from "../../components/Feed";
