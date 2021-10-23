@@ -22,7 +22,16 @@ export const CardStats = ({ count, description, icon }) => {
   }
 
   const Card = styled.div`
-    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    width: 140px;
+    height: 140px;
   `
 
   return (
