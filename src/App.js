@@ -12,6 +12,7 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
   width: 411px;
   background-color: #f2f2f2;
   margin: auto;
