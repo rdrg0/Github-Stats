@@ -28,6 +28,9 @@ function App() {
     statGist: "72",
   };
 
+  localStorage.setItem("repoCount", 249);
+  localStorage.setItem("currentUser", "gaearon");
+
   return (
     <Main>
       <Router>
