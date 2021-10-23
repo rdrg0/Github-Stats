@@ -15,6 +15,9 @@ export default function UserDetails({ userData }) {
     public_gists,
   } = userData;
 
+  function handleStar() {
+    console.log(userData)
+  }
   const CardsContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -45,13 +48,21 @@ export default function UserDetails({ userData }) {
     align-items: center;
     margin: 0px 4px;
   `
+  const Clickable = styled.div`
+    &:hover {
+      cursor: pointer;
+    }  
+  `
+
 
   return (
     <ResultContainer>
       <ImgStyle src={avatar_url} alt="avatar" />
-      <UserName> 
-        {name} 
-        <img src={starred} alt="starred" />
+      <UserName>
+        {name}
+        <Clickable onClick={handleStar}>
+          <img src={starred} alt="starred" />
+        </Clickable>
       </UserName>
       <h3> {bio} </h3>
       <CardsContainer>
