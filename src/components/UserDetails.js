@@ -14,6 +14,7 @@ export default function UserDetails({ userData }) {
     public_repos,
     public_gists,
   } = userData;
+
   const CardsContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -25,12 +26,33 @@ export default function UserDetails({ userData }) {
     border-radius: 50%;
     width: 120px;
   `;
+  const ResultContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  `
+  const UserName = styled.div`
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 25px;
+    height: 25px;
+    gap: 4px;
+    text-align: center;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    margin: 0px 4px;
+  `
 
   return (
-    <div>
-      <ImgStyle src={avatar_url} alt="avatar" /> <br />
-      <h2> {name} </h2>
-      <img src={starred} alt="starred" />
+    <ResultContainer>
+      <ImgStyle src={avatar_url} alt="avatar" />
+      <UserName> 
+        {name} 
+        <img src={starred} alt="starred" />
+      </UserName>
       <h3> {bio} </h3>
       <CardsContainer>
         <CardStats count={followers} description="followers" icon="followers" />
@@ -50,6 +72,6 @@ export default function UserDetails({ userData }) {
           icon="gits"
         />
       </CardsContainer>
-    </div>
+    </ResultContainer>
   );
 }

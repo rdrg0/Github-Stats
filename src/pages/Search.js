@@ -22,6 +22,19 @@ export default function Search() {
     align-items: center;
     gap: 12px;
   `;
+  const Searching = styled.div`
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 12px;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 25px;
+
+    color: #000000;
+  `
   const handleFeedback = () => {
     if (userData !== null) {
       setCurrentUser(userData);
@@ -35,10 +48,10 @@ export default function Search() {
       <InputSearch value={value} setValue={setValue} />
       <ContainerStyle>
         {handleFeedback() || (
-          <div>
+          <Searching>
             <img alt="logo-github" src="/git-logo.png" />
             {loading ? <h3>Retrieving user...</h3> : <h3>No users...</h3>}
-          </div>
+          </Searching>
         )}
       </ContainerStyle>
     </MainContainer>
