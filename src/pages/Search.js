@@ -21,6 +21,15 @@ export default function Search() {
   `;
   const handleFeedback = () => {
     if (userData !== null) {
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify({
+          username: userData.login,
+          reposCount: userData.public_repos,
+          followersCount: userData.followers,
+          followingsCount: userData.following,
+        })
+      );
       return <UserDetails userData={userData} />;
     }
     return;

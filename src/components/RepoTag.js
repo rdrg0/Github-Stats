@@ -2,8 +2,9 @@ import styled from "@emotion/styled";
 import colors from "../utils/languageColors.json";
 import stargazerIcon from "../assets/stargazer.svg";
 import forkIcon from "../assets/fork.svg";
+import { Link } from "react-router-dom";
 
-const MainContainer = styled.div`
+const MainContainer = styled(Link)`
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -31,7 +32,7 @@ const FlexContainer = styled.p`
 
 export default function RepoTag(props) {
   return (
-    <MainContainer>
+    <MainContainer to={{ pathname: props.html_url }} target="_blank">
       <RepoFullName>{props.full_name}</RepoFullName>
       <SmallText>{props.description}</SmallText>
 

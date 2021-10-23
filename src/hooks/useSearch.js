@@ -11,6 +11,7 @@ export default function useSearch() {
 
   useEffect(() => {
     setUserData(null);
+    push(`/search`);
     if (value.length < 3) return;
 
     const searchUser = async () => {
