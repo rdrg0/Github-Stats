@@ -7,9 +7,10 @@ import Followings from "./pages/users/Followings";
 import styled from "@emotion/styled";
 import Search from "./pages/Search";
 import Favorites from "./pages/Favorites";
-import HomeIcon from "./assets/VectorHomeIcon.svg"
-import SearchIcon from "./assets/VectorSearchIcon.svg"
-import FavoriteIcon from "./assets/VectorFavoriteIcon.svg"
+import { ReactComponent as HomeIcon } from "./assets/VectorHomeIcon.svg";
+import { ReactComponent as FavoriteIcon } from "./assets/VectorFavoriteIcon.svg";
+import { ReactComponent as SearchIcon } from "./assets/VectorSearchIcon.svg";
+import { useEffect, useReducer, useState } from "react";
 
 
 const Main = styled.main`
@@ -35,8 +36,33 @@ const Footer = styled.div`
   background: #F2F2F2;
   box-shadow: 0px -2px 0px rgba(0, 0, 0, 0.25);
 `
+const changeColor = (e) => {
+  const target = e.target
+  const classValue = target.attributes.class.value
+  const parentTarget = target.parentElement.parentElement.parentElement
+  switch (classValue) {
+    case "HomeIcon":
+      target.style.fill="#828282"
+      parentTarget.children[1].children[0].children[0].style.fill="#BDBDBD"
+      parentTarget.children[2].children[0].children[0].style.fill="#BDBDBD"
+      break;
+    case "SearchIcon":
+      target.style.fill="#828282"
+      parentTarget.children[0].children[0].children[0].style.fill="#BDBDBD"
+      parentTarget.children[2].children[0].children[0].style.fill="#BDBDBD"
+      break;
+    case "FavoriteIcon":
+      target.style.fill="#828282"
+      parentTarget.children[0].children[0].children[0].style.fill="#BDBDBD"
+      parentTarget.children[1].children[0].children[0].style.fill="#BDBDBD"
+      break;
+    default:
+      break;
+  }
+}
 
 function App() {
+  
   return (
     <Main>
       <Router>
@@ -51,9 +77,15 @@ function App() {
           <Route component={Error404} />
         </Switch>
         <Footer>
-          <Link to="/"><img src={HomeIcon} alt="HomeIcon"/></Link>
-          <Link to="/search"><img src={SearchIcon} alt="SearchIcon"/></Link>
-          <Link to="/favorites"><img src={FavoriteIcon} alt="FavoriteIcon"/></Link>
+          <Link to="/">
+            <HomeIcon fill="#BDBDBD" onClick={changeColor} />
+          </Link>
+          <Link to="/search">
+            <SearchIcon fill="#BDBDBD" onClick={changeColor}/>
+          </Link>
+          <Link to="/favorites">
+            <FavoriteIcon fill="#BDBDBD" onClick={changeColor} />
+          </Link>
         </Footer>
       </Router>
     </Main>
