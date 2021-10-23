@@ -1,59 +1,44 @@
-
 import { TitleH1 } from "../../components/Title";
 import styled from "@emotion/styled";
 import Pagination from "../../components/Pagination";
 import Feed from "../../components/Feed";
 import RepoTag from "../../components/RepoTag";
 import { TitleH2 } from "../../components/Title";
-import { Redirect, useLocation } from "react-router";
-import parseQuery from "../../utils/queryParser";
 import { useEffect, useState } from "react";
 import { getRepos } from "../../services/gitHub_fetcher";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 411px;
-  padding: 16px 32px;
-  background-color: #f2f2f2;
-`;
+import { TagsContainer } from "../../components/UI/TagsContainer";
+import usePagination from "../../hooks/usePagination";
+import { groupByThreeDigits } from "../../utils/formatNumber";
 
 export default function Repos() {
   const [repos, setRepos] = useState([]);
-  const username = localStorage.getItem("currentUser");
-  const count = localStorage.getItem("repoCount");
-  const location = useLocation();
-  const pathName = location.pathname;
-  const query = location.search;
-  const currentPage = parseQuery(query);
-  const initial = ((currentPage || 1) - 1) * 5;
+  const [pathName, currentPage] = usePagination();
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const username = currentUser.username;
+  const count = groupByThreeDigits(currentUser.reposCount);
+  const limit = 5;
+  const start = (currentPage - 1) * limit;
 
   useEffect(() => {
     getRepos(username).then(setRepos).catch(console.log);
   }, []);
 
-  if (query && !currentPage) {
-    alert("Invalid page query!");
-    return <Redirect to="/" />;
-  }
-
   return (
-    <Container>
+    <TagsContainer>
       <TitleH2>Public Repos ({count})</TitleH2>
       <Pagination
         total={repos.length}
-        limit={5}
-        currentPage={currentPage || 1}
+        limit={limit}
+        currentPage={currentPage}
         pathName={pathName}
       />
       <Feed>
-        {repos.slice(initial, initial + 5).map((repo) => (
+        {repos.slice(start, start + limit).map((repo) => (
           <li key={repo.id}>
             <RepoTag {...repo} />
           </li>
         ))}
       </Feed>
-    </Container>
+    </TagsContainer>
   );
 }

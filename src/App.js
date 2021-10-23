@@ -28,8 +28,15 @@ function App() {
     statGist: "72",
   };
 
-  localStorage.setItem("repoCount", 249);
-  localStorage.setItem("currentUser", "gaearon");
+  localStorage.setItem(
+    "currentUser",
+    JSON.stringify({
+      username: "gaearon",
+      reposCount: 249,
+      followersCount: 64254,
+      followingsCount: 171,
+    })
+  );
 
   return (
     <Main>

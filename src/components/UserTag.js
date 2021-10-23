@@ -1,8 +1,9 @@
 import defaultAvatar from "../assets/default_avatar.png";
 import star from "../assets/starred.svg";
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
-const MainContainer = styled.div`
+const MainContainer = styled(Link)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +43,7 @@ const FavoriteUserInfo = ({ name, login }) => (
 
 export default function UserTag({ asFavorite, avatar, name, login }) {
   return (
-    <MainContainer>
+    <MainContainer to={`/users/${login}`}>
       <UserContainer>
         <Avatar src={avatar || defaultAvatar} alt="" />
         {asFavorite ? (
