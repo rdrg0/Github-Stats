@@ -1,24 +1,28 @@
 import { useEffect, useState } from "react";
 import { getUser } from "../services/gitHub_fetcher";
-import { useHistory, useLocation } from "react-router";
+import { useHistory } from "react-router";
 
-export default function useSearch() {
+export default function useSearch(username = "") {
   const [userData, setUserData] = useState(null);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(username);
   const [loading, setLoading] = useState(false);
 
   const { push } = useHistory();
-  console.log(useHistory());
+
   useEffect(() => {
     setUserData(null);
+    push(`/search`);
+    if (value.length < 3) return;
 
     const searchUser = async () => {
       try {
+        setLoading(true);
         const user_data_api = await getUser(value);
         setUserData(user_data_api);
         setLoading(false);
-        push(`search/users/${value}`);
+        push(`/users/${value}`);
       } catch (error) {
+        console.log(error);
         setLoading(false);
         setUserData(null);
       }
@@ -29,5 +33,5 @@ export default function useSearch() {
     };
   }, [value]);
 
-  return [value, setValue, loading, setLoading, userData];
+  return [value, setValue, loading, userData];
 }

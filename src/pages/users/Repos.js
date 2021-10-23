@@ -1,5 +1,3 @@
-import { TitleH1 } from "../../components/Title";
-import styled from "@emotion/styled";
 import Pagination from "../../components/Pagination";
 import Feed from "../../components/Feed";
 import RepoTag from "../../components/RepoTag";
@@ -8,14 +6,14 @@ import { useEffect, useState } from "react";
 import { getRepos } from "../../services/gitHub_fetcher";
 import { TagsContainer } from "../../components/UI/TagsContainer";
 import usePagination from "../../hooks/usePagination";
-import { groupByThreeDigits } from "../../utils/formatNumber";
+import { useParams } from "react-router";
+import useAttributeCount from "../../hooks/useAttributeCount";
 
 export default function Repos() {
   const [repos, setRepos] = useState([]);
   const [pathName, currentPage] = usePagination();
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  const username = currentUser.username;
-  const count = groupByThreeDigits(currentUser.reposCount);
+  const { username } = useParams();
+  const count = useAttributeCount(username, "repos");
   const limit = 5;
   const start = (currentPage - 1) * limit;
 

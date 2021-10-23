@@ -5,7 +5,6 @@ import starred from "../assets/starred.svg";
 import styled from "@emotion/styled";
 
 export default function UserDetails({ userData }) {
-  console.log("USER DETAILS");
   const {
     avatar_url,
     name,

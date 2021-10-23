@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import Feed from "../../components/Feed";
 import Pagination from "../../components/Pagination";
 import { TitleH2 } from "../../components/Title";
 import { TagsContainer } from "../../components/UI/TagsContainer";
 import UserTag from "../../components/UserTag";
+import useAttributeCount from "../../hooks/useAttributeCount";
 import usePagination from "../../hooks/usePagination";
 import { getFollowings } from "../../services/gitHub_fetcher";
-import { groupByThreeDigits } from "../../utils/formatNumber";
 
 export default function Followings(props) {
   const [followings, setFollowings] = useState([]);
   const [pathName, currentPage] = usePagination();
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  const username = currentUser.username;
-  const count = groupByThreeDigits(currentUser.followingsCount);
+  const { username } = useParams();
+  const count = useAttributeCount(username, "followings");
   const limit = 7;
   const start = (currentPage - 1) * limit;
 

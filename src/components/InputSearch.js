@@ -15,11 +15,10 @@ const InputStyle = styled.input`
   padding: 4px 8px;
 `;
 
-export default function InputSearch({ value, setValue, setLoading }) {
+export default function InputSearch({ value, setValue }) {
   const handleInput = (e) => {
     e.preventDefault();
     setValue(e.target.value);
-    setLoading(true);
   };
   return (
     <InputStyle

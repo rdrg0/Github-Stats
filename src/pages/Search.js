@@ -2,27 +2,37 @@ import InputSearch from "../components/InputSearch";
 import UserDetails from "../components/UserDetails";
 import useSearch from "../hooks/useSearch";
 import styled from "@emotion/styled";
+import { useParams } from "react-router";
+import setCurrentUser from "../utils/setCurrentUser";
 
-export default function Search(props) {
-  const [value, setValue, loading, setLoading, userData] = useSearch();
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 25px 41px 26px;
+`;
+
+export default function Search() {
+  const { username } = useParams();
+  const [value, setValue, loading, userData] = useSearch(username);
 
   const ContainerStyle = styled.div`
-    padding-top: 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
   `;
   const handleFeedback = () => {
     if (userData !== null) {
+      setCurrentUser(userData);
       return <UserDetails userData={userData} />;
     }
     return;
   };
 
   return (
-    <>
-      <InputSearch value={value} setValue={setValue} setLoading={setLoading} />
+    <MainContainer>
+      <InputSearch value={value} setValue={setValue} />
       <ContainerStyle>
         {handleFeedback() || (
           <div>
@@ -31,6 +41,6 @@ export default function Search(props) {
           </div>
         )}
       </ContainerStyle>
-    </>
+    </MainContainer>
   );
 }
