@@ -8,7 +8,6 @@ export default function useStar(userData) {
 
     const favorites = JSON.parse(localStorage.getItem("ghFavorites")) || {};
 
-
     if (favorite) {
       delete favorites[userData.login]
     } else {
@@ -19,5 +18,5 @@ export default function useStar(userData) {
     setFavorite(!favorite)
   }
 
-  return [favorite, setFavorite, handleStar]
+  return [favorite, handleStar]
 }
