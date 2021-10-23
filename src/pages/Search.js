@@ -3,6 +3,7 @@ import UserDetails from "../components/UserDetails";
 import useSearch from "../hooks/useSearch";
 import styled from "@emotion/styled";
 import { useParams } from "react-router";
+import setCurrentUser from "../utils/setCurrentUser";
 
 const MainContainer = styled.div`
   display: flex;
@@ -23,15 +24,7 @@ export default function Search() {
   `;
   const handleFeedback = () => {
     if (userData !== null) {
-      localStorage.setItem(
-        "currentUser",
-        JSON.stringify({
-          username: userData.login,
-          reposCount: userData.public_repos,
-          followersCount: userData.followers,
-          followingsCount: userData.following,
-        })
-      );
+      setCurrentUser(userData);
       return <UserDetails userData={userData} />;
     }
     return;

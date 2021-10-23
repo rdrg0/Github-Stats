@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
-import "./App.css";
 import Error404 from "./pages/Error404";
 import Followers from "./pages/users/Followers";
 import Repos from "./pages/users/Repos";
