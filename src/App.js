@@ -10,6 +10,7 @@ import Favorites from "./pages/Favorites";
 import { ReactComponent as HomeIcon } from "./assets/VectorHomeIcon.svg";
 import { ReactComponent as FavoriteIcon } from "./assets/VectorFavoriteIcon.svg";
 import { ReactComponent as SearchIcon } from "./assets/VectorSearchIcon.svg";
+import { useRef } from "react";
 
 
 const Main = styled.main`
@@ -35,34 +36,40 @@ const Footer = styled.div`
   background: #F2F2F2;
   box-shadow: 0px -2px 0px rgba(0, 0, 0, 0.25);
 `
-const changeColor = () => {
-  const url = window.location.pathname
-  const Home = document.querySelector(".HomeIcon").children[0]
-  const Search = document.querySelector(".SearchIcon").children[0]
-  const Favorite = document.querySelector(".FavoriteIcon").children[0]
-
-  switch (url) {
-    case "/":
-      Home.attributes.fill.value="#828282"
-      Search.attributes.fill.value="#BDBDBD"
-      Favorite.attributes.fill.value="#BDBDBD"
-      break;
-    case "/search":
-      Search.attributes.fill.value="#828282"
-      Home.attributes.fill.value="#BDBDBD"
-      Favorite.attributes.fill.value="#BDBDBD"
-      break;
-    case "/favorites":
-      Favorite.attributes.fill.value="#828282"
-      Search.attributes.fill.value="#BDBDBD"
-      Home.attributes.fill.value="#BDBDBD"
-      break;
-    default:
-      break;
-  }
-}
 
 function App() {
+  const homeRef = useRef()
+  const searchRef = useRef()
+  const favoriteRef = useRef()
+
+  const changeColor = () => {
+    const url = window.location.pathname
+    const Home = homeRef.current.children[0]
+    const Search = searchRef.current.children[0]
+    const Favorite = favoriteRef.current.children[0]
+  
+    switch (url) {
+      case "/":
+        Home.attributes.fill.value="#828282"
+        Search.attributes.fill.value="#BDBDBD"
+        Favorite.attributes.fill.value="#BDBDBD"
+        break;
+      case "/search":
+        console.log(Search.children)
+        Search.attributes.fill.value="#828282"
+        Home.attributes.fill.value="#BDBDBD"
+        Favorite.attributes.fill.value="#BDBDBD"
+        break;
+      case "/favorites":
+        console.log(Favorite.children)
+        Favorite.attributes.fill.value="#828282"
+        Search.attributes.fill.value="#BDBDBD"
+        Home.attributes.fill.value="#BDBDBD"
+        break;
+      default:
+        break;
+    }
+  }
   
   return (
     <Main>
@@ -79,13 +86,13 @@ function App() {
         </Switch>
         <Footer onClick={changeColor}>
         <Link to="/">
-          <HomeIcon className="HomeIcon" />
+          <HomeIcon ref={homeRef} />
         </Link>
         <Link to="/search">
-          <SearchIcon className="SearchIcon"/>
+          <SearchIcon ref={searchRef}/>
         </Link>
         <Link to="/favorites">
-          <FavoriteIcon className="FavoriteIcon"/>
+          <FavoriteIcon ref={favoriteRef}/>
         </Link>
         </Footer>
       </Router>
