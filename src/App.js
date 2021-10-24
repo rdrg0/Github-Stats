@@ -55,13 +55,11 @@ function App() {
         Favorite.attributes.fill.value="#BDBDBD"
         break;
       case "/search":
-        console.log(Search.children)
         Search.attributes.fill.value="#828282"
         Home.attributes.fill.value="#BDBDBD"
         Favorite.attributes.fill.value="#BDBDBD"
         break;
       case "/favorites":
-        console.log(Favorite.children)
         Favorite.attributes.fill.value="#828282"
         Search.attributes.fill.value="#BDBDBD"
         Home.attributes.fill.value="#BDBDBD"

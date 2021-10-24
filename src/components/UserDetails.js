@@ -22,9 +22,6 @@ export default function UserDetails({ userData }) {
     login
   } = userData;
 
-  console.log(userData.login)
-
-
   const CardsContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
