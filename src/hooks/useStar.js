@@ -14,7 +14,6 @@ export default function useStar(userData) {
       favorites[userData.login] = { ...userData, starred: true }
     }
     localStorage.setItem("ghFavorites", JSON.stringify(favorites))
-    console.log(favorites)
     setFavorite(!favorite)
   }
 

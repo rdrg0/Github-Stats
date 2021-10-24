@@ -5,6 +5,7 @@ import starredIcon from "../assets/starred.svg";
 import notSarredIcon from "../assets/notStarred.svg"
 import styled from "@emotion/styled";
 import useStar from "../hooks/useStar";
+import { Link } from "react-router-dom";
 
 export default function UserDetails({ userData }) {
 
@@ -20,9 +21,6 @@ export default function UserDetails({ userData }) {
     public_gists,
     login
   } = userData;
-
-  console.log(userData.login)
-
 
   const CardsContainer = styled.div`
     display: grid;
@@ -72,21 +70,27 @@ export default function UserDetails({ userData }) {
       </UserName>
       <h3> {bio} </h3>
       <CardsContainer>
-        <CardStats count={followers} description="followers" icon="followers" />
-        <CardStats
+        <Link to={`/users/${login}/followers`}>
+          <CardStats count={followers} description="followers" icon="followers" />
+        </Link>
+        <Link to={`/users/${login}/followings`}>
+          <CardStats
           count={following}
           description="followings"
           icon="followings"
-        />
-        <CardStats
+          />
+        </Link>
+        <Link to={`/users/${login}/repos`}>
+          <CardStats
           count={public_repos}
           description="public repos"
           icon="repos"
-        />
+          />
+        </Link>
         <CardStats
-          count={public_gists}
-          description="public gists"
-          icon="gits"
+        count={public_gists}
+        description="public gists"
+        icon="gits"
         />
       </CardsContainer>
     </ResultContainer>

@@ -9,10 +9,8 @@ export default function useAttributeCount(username, attribute) {
   let count;
 
   if (currentUser && currentUser.username === username) {
-    console.log("ENTERED IF");
     count = groupByThreeDigits(currentUser[`${attribute}Count`]);
   } else {
-    console.log("ENTERED else");
     getUser(username)
       .then(setCurrentUser)
       .catch((error) => {

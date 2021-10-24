@@ -15,7 +15,7 @@ const HomeContainer = styled.div`
   justify-content: space-evenly;
   height: 80vh;
 `
-const Button = styled.a`
+const Button = styled.div`
   display: flex;
   justify-content: center;
   padding: 8px 16px;

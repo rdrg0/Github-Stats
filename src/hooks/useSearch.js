@@ -17,7 +17,6 @@ export default function useSearch(username = "") {
     const searchUser = async () => {
       try {
         setLoading(true);
-        console.log(value)
         const savedFavorites = JSON.parse(localStorage.getItem("ghFavorites"));
         if (savedFavorites && savedFavorites[value]) {
           console.log("API not called")
@@ -26,7 +25,6 @@ export default function useSearch(username = "") {
         } else {
 
           const user_data_api = await getUser(value);
-          console.log(user_data_api)
           const userLocalData = {
             avatar_url: user_data_api.avatar_url,
             name: user_data_api.name,

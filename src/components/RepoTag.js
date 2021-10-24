@@ -24,7 +24,7 @@ const SmallText = styled.p`
   line-height: 15px;
 `;
 
-const FlexContainer = styled.p`
+const FlexContainer = styled.div`
   display: flex;
   align-items: center;
   gap: ${(props) => props.gap};
